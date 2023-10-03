@@ -10,7 +10,7 @@
     <Meta name="description" hid="description"
       content="Easily store your NBT Minecraft schematics in the cloud for later use">
     </Meta>
-    <Link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <Link rel="icon" type="image/x-icon" href="https://ns.alsace.team/service/images/logo/favicon.ico">
     </Link>
   </Head>
 
@@ -27,11 +27,7 @@
             </div>
             <div class="card-footer">
               <p class="m-0 text-center">
-                &copy; 2020 -
-                <script>
-                  document.write(new Date().getFullYear());
-                </script>
-                长沙阿尔萨斯文化传播有限公司 All Rights Reserved.
+                &copy; 2020 - 2023 长沙阿尔萨斯文化传播有限公司 All Rights Reserved.
                 <br>Powered by Usine d' Alsace · 阿尔萨斯工业™
                 <br><a href="https://beian.miit.gov.cn/" target="_blank">湘ICP备2023023798号</a>
               </p>
@@ -57,9 +53,10 @@ onMounted(async () => {
 })
 </script>
 
+
 <style>
 body {
-  background-image: url('~/assets/img/background.svg');
+  background-image: url('https://ns.alsace.team/service/images/img/arks_max.JPG');
   background-position: center;
   background-size: cover;
   min-height: 100vh;

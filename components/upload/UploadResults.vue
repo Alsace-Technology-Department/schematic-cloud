@@ -109,7 +109,7 @@ const props = defineProps({
 
 const downloadUrl = async (key: string) => {
   // return `${(await $fetch<Config>('/config.json')).public_url}/download/${key}`
-  return `/schem load url:${key}`
+  return `//schem load url:${key}`
 }
 
 const handleDownloadClick = async () => {
