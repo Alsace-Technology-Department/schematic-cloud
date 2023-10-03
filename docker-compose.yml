@@ -3,7 +3,10 @@ services:
   schematic.cloud:
     container_name: schematic.cloud
     ports:
-      - "3001:3001"
-    image: alsacework/schematic.cloud:dev
+      - "80:3001"
+    image: alsacework/schematic.cloud:latest
+    volumes:
+      - /data:/app/public
     restart: unless-stopped
+
 

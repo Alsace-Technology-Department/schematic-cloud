@@ -7,25 +7,40 @@
   </picture>
 </a>
 
-## Pull from docker hub:
+## 拉取Docker镜像:
+  ```bash
+  docker pull alsaceteam/schematic.cloud
+  ```
 
-https://hub.docker.com/r/intellectualsites/schematic-web
+## 你可以使用docker-compose
+  ``` yaml
+  version: '3'
+  services:
+    schematic.cloud:
+      container_name: schematic.cloud
+      ports:
+        - "80:3001"
+      image: alsacework/schematic.cloud:latest
+      volumes:
+        - /data:/app/public
+      restart: unless-stopped
+  ```
 
-## Build Setup
+## 构建
 
 ```bash
-# install dependencies
+# 安装依赖
 $ yarn install
 
-# serve with hot reload at localhost:3000
+# 在localhost:3001热重载
 $ yarn dev
 
-# build for production and launch server
+# 构建生产环境
 $ yarn build
 $ yarn start
 
-# generate static project
+# 生成静态项目
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+有关工作原理的详细说明，请查看 [Nuxt.js docs](https://nuxtjs.org).
