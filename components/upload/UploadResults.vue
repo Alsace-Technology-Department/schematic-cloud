@@ -54,7 +54,7 @@
       <UploadCopyableText name="下载密钥" :value="result.download_key" />
       <UploadCopyableText name="删除密钥" :value="result.delete_key" />
       <UploadCopyableText
-        name="上传 URL"
+        name="在Minecraft中使用"
         :value="downloadUrl(result.download_key!)"
         :is-url="true"
         url-button-txt="Download"
