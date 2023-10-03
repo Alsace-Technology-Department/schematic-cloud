@@ -24,7 +24,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              您确定要删除原理图吗？ 您的文件将立即从我们的服务器中删除。 此操作无法撤销。
+              您确定要删除schematic吗？ 您的文件将立即从我们的服务器中删除。 此操作无法撤销。
             </div>
             <div class="modal-footer">
               <button
@@ -48,7 +48,7 @@
       </div>
       <div class="text">
         <p>
-          您只能看到一次这个页面，请务必记住一下内容（如果您需要的话）。 最重要的是，保留您的删除密钥，否则您将无法删除该schematic。
+          您只能看到一次这个页面，请务必记住一下内容（如果您需要的话）。 请务必保留您的删除密钥，否则您将无法从云端删除该schematic。
         </p>
       </div>
       <UploadCopyableText name="下载密钥" :value="result.download_key" />
