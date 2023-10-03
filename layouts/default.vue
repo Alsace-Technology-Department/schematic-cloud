@@ -1,52 +1,47 @@
 <template>
   <Html>
-    <Head>
-      <Title>schematic.cloud</Title>
-      <Meta charset="UTF-8"></Meta>
-      <Meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-      ></Meta>
-      <Meta
-        name="description"
-        hid="description"
-        content="Easily store your NBT Minecraft schematics in the cloud for later use"
-      ></Meta>
-      <Link rel="icon" type="image/x-icon" href="/favicon.ico"></Link>
-    </Head>
-    <Body>
-      <div class="container">
-        <div class="row pt-5">
-          <div class="col-8 mx-auto">
-            <div class="card bg-dark bg-opacity-90 text-light">
-              <div class="card-body">
-                <nuxt-link to="/">
-                  <img
-                    class="d-block my-0 mx-auto"
-                    src="~/assets/img/logo.svg"
-                    alt="schematic.cloud"
-                  />
-                </nuxt-link>
-                <nuxt-page></nuxt-page>
-              </div>
-              <!-- <div class="card-footer">
-                <p class="m-0 text-center">
-                  schematic.cloud version {{ version }}. Made with
-                  <span class="text-danger">&hearts;</span> by
-                  <a
-                    class="text-decoration-none"
-                    href="https://github.com/IntellectualSites/schematic.cloud"
-                    target="_blank"
-                  >
-                    IntellectualSites
-                  </a>
-                </p>
-              </div> -->
+
+  <Head>
+    <Title>schematic.cloud</Title>
+    <Meta charset="UTF-8">
+    </Meta>
+    <Meta name="viewport" content="width=device-width, initial-scale=1">
+    </Meta>
+    <Meta name="description" hid="description"
+      content="Easily store your NBT Minecraft schematics in the cloud for later use">
+    </Meta>
+    <Link rel="icon" type="image/x-icon" href="/favicon.ico">
+    </Link>
+  </Head>
+
+  <Body>
+    <div class="container">
+      <div class="row pt-5">
+        <div class="col-8 mx-auto">
+          <div class="card bg-dark bg-opacity-90 text-light">
+            <div class="card-body">
+              <nuxt-link to="/">
+                <img class="d-block my-0 mx-auto" src="~/assets/img/logo.svg" alt="schematic.cloud" />
+              </nuxt-link>
+              <nuxt-page></nuxt-page>
+            </div>
+            <div class="card-footer">
+              <p class="m-0 text-center">
+                &copy; 2020 -
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                长沙阿尔萨斯文化传播有限公司 All Rights Reserved.
+                <br>Powered by Usine d' Alsace · 阿尔萨斯工业™
+                <br><a href="https://beian.miit.gov.cn/" target="_blank">湘ICP备2023023798号</a>
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </Body>
+    </div>
+  </Body>
+
   </Html>
 </template>
 
