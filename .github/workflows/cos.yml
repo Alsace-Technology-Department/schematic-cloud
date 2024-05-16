@@ -19,9 +19,13 @@ jobs:
           cache: 'yarn'
           cache-dependency-path: '**/yarn.lock'
 
+      - name: Enable Corepack and install Yarn
+        run: |
+          corepack enable
+          corepack prepare yarn@3.6.2 --activate
+
       - name: Install dependencies
         run: yarn install
-        working-directory: .
 
       - name: Build with Nuxt
         run: yarn build
