@@ -15,14 +15,15 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "21"
+          node-version: "21"  # 使用 Node.js 21 版本
           cache: 'yarn'
           cache-dependency-path: '**/yarn.lock'
 
-      - name: Enable Corepack and install Yarn
-        run: |
-          corepack enable
-          corepack prepare yarn@3.6.2 --activate
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Prepare Yarn
+        run: corepack prepare yarn@3.6.2 --activate
 
       - name: Install dependencies
         run: yarn install
