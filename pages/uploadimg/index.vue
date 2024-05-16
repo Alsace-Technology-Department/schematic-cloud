@@ -1,5 +1,5 @@
 <template>
   <div class="card-body">
-    <PixelgengratePixelGenerate />
+    <PixelgengratePixelGenerateInterface />
   </div>
 </template>

@@ -109,7 +109,7 @@ const onChange = async (e: InputEvent) => {
         break
       case undefined:
       default:
-        error = `尝试上传文件时发生未知错误。 请重试，或将此问题报告给开发人员。详细数据${response.message}`
+        error = `尝试上传文件时发生未知错误。 请重试，或将此问题报告给开发人员。详细数据${err.message}`
         break
     }
 
