@@ -1,0 +1,49 @@
+name: Continuous integration of static websites to COS
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build_and_deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "21"  # 修改为你项目所需的Node.js版本
+          cache: 'yarn'
+          cache-dependency-path: '**/yarn.lock'
+
+      - name: Install dependencies
+        run: yarn install
+        working-directory: .
+
+      - name: Build with Nuxt
+        run: yarn build
+
+      - name: 安装腾讯云依赖
+        run: |
+          sudo pip install coscmd
+          sudo pip install tccli
+
+      - name: 配置腾讯云依赖
+        env:
+          SECRET_ID: ${{ secrets.TCLOUD_API_ID }}
+          SECRET_KEY: ${{ secrets.TCLOUD_API_KEY }}
+          BUCKET: schem-1318358151
+          REGION: ap-shanghai
+        run: |
+          coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+          tccli configure set secretId $SECRET_ID
+          tccli configure set secretKey $SECRET_KEY
+          tccli configure set region $REGION
+
+      - name: 上传到腾讯云COS并刷新CDN
+        run: |
+          coscmd upload -rfs --delete ./dist/ /
+          tccli cdn PurgePathCache --cli-unfold-argument --Paths https://schem.alsace.team/ --FlushType flush

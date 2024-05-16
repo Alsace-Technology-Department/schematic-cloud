@@ -25,10 +25,12 @@
   },
   "homepage": "https://github.com/IntellectualSites/schematic.cloud#readme",
   "dependencies": {
-    "axios": "^1.4.0",
+    "axios": "1.6.0",
     "bootstrap": "5.3.0",
     "funnies": "2.1.0",
     "nuxt": "3.6.5",
+    "pngjs": "7.0.0",
+    "prismarine-nbt": "^2.5.0",
     "vue-clipboard3": "^2.0.0"
   },
   "devDependencies": {

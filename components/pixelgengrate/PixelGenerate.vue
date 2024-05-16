@@ -4,7 +4,7 @@
   </div>
   <div v-else class="file-selector">
     <p class="welcome mb-4">
-      欢迎来到schematic.cloud！ 请选择您想要上传的schematic文件:
+      欢迎来到schematic.cloud！ 请选择您想要上传的图片文件:
     </p>
     <div class="mb-3">
       <input
@@ -14,65 +14,63 @@
         @change="onChange"
       />
     </div>
+    <div v-if="previewUrl" class="mb-3">
+      <p class="mt-2">图片预览:</p>
+      <img :src="previewUrl" class="img-thumbnail" alt="图片预览" />
+    </div>
     <p class="links mt-4">
       点击这里
-      <nuxt-link class="text-decoration-none" to="/download">下载</nuxt-link>
-      你的schematic, 或者点击
-      <nuxt-link class="text-decoration-none" to="/delete">删除</nuxt-link>
-      你的文件。
-    </p>
-    <p class="links mt-4">
-      如果你想将图片转为像素画上传至服务器，请点击
-      <nuxt-link class="text-decoration-none" to="/uploadimg">图片转schem</nuxt-link>
-    </p>
-    <p class="links mt-4">
-      有关 schematic cloud 的更多信息，请访问
-      <a
-        class="text-decoration-none"
-        href="https://alsaceteam.feishu.cn/wiki/Pm87wSa3oikct9kqdTNcJm0Pnke#part-J7TZdaVhSoZR9yx1S8LczDryn74"
-        target="_blank"
-        >命令指南</a
-      >
+      <nuxt-link class="text-decoration-none" to="/">返回首页 </nuxt-link>
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import axios from 'axios'
 
 const emits = defineEmits(['success', 'failed'])
 
 const uploading = ref<boolean>(false)
 const progress = ref<number>(0.0)
+const previewUrl = ref<string | null>(null)
 
-const onChange = async (e: InputEvent) => {
-  const files: FileList = (e.target as HTMLFormElement).files
+const onChange = async (e: Event) => {
+  const files = (e.target as HTMLInputElement).files
 
   if (!files || files.length === 0) {
     return
   }
 
+  const file = files[0]
+
   if (
-    files[0].name.split('.').pop() !== 'schem' &&
-    files[0].name.split('.').pop() !== 'schematic'
+    file.name.split('.').pop()?.toLowerCase() !== 'png' &&
+    file.name.split('.').pop()?.toLowerCase() !== 'jpg' &&
+    file.name.split('.').pop()?.toLowerCase() !== 'jpeg'
   ) {
     emits(
       'failed',
-      '您上传的文件不是有效的 schematic 文件，因此已被拒绝。 请上传有效的 schematic 文件。',
+      '您上传的文件不是有效的图片文件，因此已被拒绝。 请上传有效的图片文件。',
     )
     return
   }
 
-  const file = files[0]
+  // 设置图片预览
+  const reader = new FileReader()
+  reader.onload = (event) => {
+    previewUrl.value = event.target?.result as string
+  }
+  reader.readAsDataURL(file)
 
   uploading.value = true
 
   const formData = new FormData()
-  formData.append('schematic', file)
+  formData.append('image', file)
 
   try {
     const resp = await axios.post(
-      `${(await $fetch('/config.json')).api_url}/upload`,
+      `${(await $fetch('/config.json')).api_url}/uploadimg`,
       formData,
       {
         headers: {
@@ -88,17 +86,17 @@ const onChange = async (e: InputEvent) => {
       download_key: resp.data.download_key,
       delete_key: resp.data.delete_key,
     })
-  } catch (err) {
+  } catch ({ response }) {
     let status
-    if (err.response) {
-      status = err.response.status
+    if (response) {
+      status = response.status
     }
 
     let error
     switch (status) {
       case 400:
         error =
-          '您上传的文件不是有效的 schematic 文件，因此已被拒绝。 请上传有效的 schematic 文件。'
+          '您上传的文件不是有效的图片文件，因此已被拒绝。 请上传有效的图片文件。'
         break
       case 500:
         error =
@@ -119,3 +117,10 @@ const onChange = async (e: InputEvent) => {
   uploading.value = false
 }
 </script>
+
+<style scoped>
+.img-thumbnail {
+  max-width: 100%;
+  height: auto;
+}
+</style>

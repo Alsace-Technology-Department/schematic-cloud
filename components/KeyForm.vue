@@ -14,6 +14,10 @@
       {{ button }}
     </button>
   </form>
+  <p class="links mt-4">
+    点击这里
+    <nuxt-link class="text-decoration-none" to="/">返回首页 </nuxt-link>
+  </p>
 </template>
 
 <script setup lang="ts">
