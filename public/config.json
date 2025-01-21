@@ -1,5 +1,5 @@
 {
   "public_url": "https://schem.alsace.team",
   "api_url": "https://api.work.alsace.team/arkitektonika/v1",
-  "lite_api_url": "http://localhost:8080"
+  "lite_api_url": "https://api.work.alsace.team/"
 }
