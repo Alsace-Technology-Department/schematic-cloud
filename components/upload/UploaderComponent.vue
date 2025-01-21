@@ -4,7 +4,7 @@
   </div>
   <div v-else class="file-selector">
     <p class="welcome mb-4">
-      欢迎来到schematic.cloud！ 请选择您想要上传的schematic文件:
+      欢迎来到schematic.cloud！ 请选择您想要上传的schem文件:
     </p>
     <div class="mb-3">
       <input
@@ -20,10 +20,6 @@
       你的schematic, 或者点击
       <nuxt-link class="text-decoration-none" to="/delete">删除</nuxt-link>
       你的文件。
-    </p>
-    <p class="links mt-4">
-      如果你想将图片转为像素画上传至服务器，请点击
-      <nuxt-link class="text-decoration-none" to="/uploadimg">图片转schem</nuxt-link>
     </p>
     <p class="links mt-4">
       有关 schematic cloud 的更多信息，请访问

@@ -15,6 +15,16 @@
   </Head>
 
   <Body>
+  <header class="app-header">
+      <nav>
+        <ul>
+          <li><a href="/">首页</a></li>
+          <li><a href="/uploadimg">图片转 schem</a></li>
+          <li><a href="/uploadlitematic">Litematic 转 schem</a></li>
+        </ul>
+      </nav>
+    </header>
+    <Nuxt />
     <div class="container">
       <div class="row pt-5">
         <div class="col-8 mx-auto">
@@ -60,5 +70,32 @@ body {
   background-position: center;
   background-size: cover;
   min-height: 100vh;
+}
+.app-header {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.app-header ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.app-header ul li {
+  display: inline;
+  margin: 0 2rem;
+}
+
+.app-header ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.app-header ul li a:hover {
+  text-decoration: underline;
 }
 </style>
